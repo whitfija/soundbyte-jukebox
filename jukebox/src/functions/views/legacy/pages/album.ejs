@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= album_info.album %></title>
+        <link rel = "icon" href = "<%= album_info.imageurl %>" type = "image/x-icon">
+        <%- include('../includes/head'); %>
+    </head>
+
+    <body>
+        <div class="content">
+            <div id="data" class="data">
+                <h1><%= album_info.album %></h1>
+                <div class="row">
+                    <div class="column">
+                        <button onclick="location.href = '/album/<%= parseInt(album_info.ranking) - 1 %>'">prev</button>
+                    </div>
+                    <div class="column">
+                        <h2><%= album_info.artist %> - (<%= album_info.year %>)</h2>
+                    </div>
+                    <div class="column">
+                        <button onclick="location.href = '/album/<%= parseInt(album_info.ranking) + 1 %>'">next</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <img style="width:60%" alt="album cover" src="<%= album_info.imageurl %>" id='img_cover'>
+                        <p>image url:</p>
+                        <input type="text" placeholder="<%= album_info.imageurl %>" value="<%= album_info.imageurl %>" id='url'>
+                    </div>
+                    <div class="column">
+                        <h2>details:</h2>
+                        <p>title:</p>
+                        <input type="text" placeholder="<%= album_info.album %>" value="<%= album_info.album %>" id='title'>
+                        <p>artist:</p>
+                        <input type="text" placeholder="<%= album_info.artist %>" value="<%= album_info.artist %>" id='artist'>
+                        <p>year:</p>
+                        <input type="text" placeholder="<%= album_info.year %>" value="<%= album_info.year %>" id='year'>
+                        <p>genre:</p>
+                        <input type="text" placeholder="<%= album_info.genre %>" value="<%= album_info.genre %>" id='genre'>
+                        <button type="submit" onclick="updateAlbum('<%= album_info.albumID %>')">save details</button>
+                    </div>
+                </div>
+                <button style="color: rgb(224, 67, 67);" onclick="deleteAlbum('<%= album_info.albumID %>')">delete album</button>
+            </div>
+            <button onclick="location.href = '/'">return to albums</button>
+            <button type="submit" onclick="location.href = '/add'">add new album</button>
+        </div>
+        <script>
+            if (document.getElementById('url').placeholder == ''){
+                document.getElementById('img_cover').src = '/public/img/placeholder_cover.png'
+            }
+        </script>
+    </body>
+</html>

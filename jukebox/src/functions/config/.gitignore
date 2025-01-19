@@ -1,0 +1,5 @@
+# place service account keys and other configs in this folder
+
+*.json
+*.env
+.env

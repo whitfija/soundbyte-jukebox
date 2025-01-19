@@ -1,0 +1,29 @@
+test3
+<% printAlbums = function(query_table) { %>
+    test2
+    <table style="width: 100%;">
+        <tr>
+            <th>Rank</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Year</th>
+        </tr>
+
+        <% for (let album of query_table){ %>
+            <tr class="album">
+                <td><%= album.ranking %></td>
+                <td><%= album.artist %></td>
+                <td><%= album.album %></td>
+                <td><%= album.year %></td>
+            </tr>
+            <% if (album.ranking%50 == 0 || album.ranking == 1){ %>
+                <tr class="album" style="margin: 0; font-size: 0px; background-color: rgb(123, 110, 128);">
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            <% } %>
+        <% } %>
+    </table>
+<% } %>

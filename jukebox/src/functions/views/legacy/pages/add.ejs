@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Album</title>
+        <link rel= "icon" href= "/public/img/placeholder_cover.png" type = "image/x-icon">
+        <%- include('../includes/head'); %>
+    </head>
+
+    <body>
+        <div class="content">
+            <div id="data" class="data">
+                <h1>add new album</h1>
+                <div class="row">
+                    <div class="column">
+                        <img style="width:60%" alt="album cover" src="/public/img/placeholder_cover.png">
+                        <p>image url:</p>
+                        <input type="text" placeholder="ex: https://www.place.com/place2omg.jpg" id='url'>
+                    </div>
+                    <div class="column">
+                        <h2>details:</h2>
+                        <p>title:</p>
+                        <input type="text" placeholder="ex: This is an Album Title" id='title'>
+                        <p>artist:</p>
+                        <input type="text" placeholder="ex: Artist Name" id='artist'>
+                        <p>year:</p>
+                        <input type="text" placeholder="ex: 2000" id='year'>
+                        <p>genre:</p>
+                        <input type="text" placeholder="ex: Hip-Hop" id='genre'>
+                        <button type="submit" onclick="addAlbum()">add album</button>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" onclick="location.href = '/'">return to albums</button>
+        </div>
+        <script>
+            
+        </script>
+    </body>
+</html>

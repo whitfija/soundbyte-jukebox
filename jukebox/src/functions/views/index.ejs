@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>soundbyte jukebox</title>
+    <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <h1>soundbyte jukebox</h1>
+
+    <div class="albums-table">
+        <h2>albums</h2>
+        <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>artist</th>
+                    <th>album</th>
+                    <th>year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% albums.forEach(album => { %>
+                    <tr>
+                        <td><%= album.artist %></td>
+                        <td><%= album.album %></td>
+                        <td><%= album.year %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

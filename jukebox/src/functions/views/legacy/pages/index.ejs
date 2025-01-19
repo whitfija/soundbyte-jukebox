@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jakob's Musac</title>
+        <link rel = "icon" href = "https://cdn2.steamgriddb.com/file/sgdb-cdn/icon/ed277964a8959e72a0d987e598dfbe72.png" type = "image/x-icon">
+        <%- include('../includes/head'); %>
+    </head>
+
+    <body>
+        <div class="content">
+            <h1>albums</h1>
+            <button type="submit" onclick="location.href = '/add'">add new album</button>
+            <button type="submit" onclick="location.href = '/menu'">main menu</button>
+            <div id="data" class="data">
+                <div class="row">
+                    <div class="column">
+                        <input type="text" placeholder="keyword(s)" id='search_key'>
+                        <button type="submit" onclick="search(document.getElementById('search_key').value)">search</button>
+                        <% if (page_mode != 'base'){ %>
+                            <button type="submit" onclick="location.href = '/'">reset</button>
+                        <% } %>
+                    </div>
+                </div>
+
+                <table id="albumlist" style="width: 100%;">
+                    <tr>
+                        <th id='ranking_head' onclick="sortAlbums('ranking')">rank</th>
+                        <th id='artist_head' onclick="sortAlbums('artist')">artist</th>
+                        <th id='album_head' onclick="sortAlbums('album')">album</th>
+                        <th id='year_head' onclick="sortAlbums('year')">year</th>
+                        <% if (page_mode == 'base'){ %>
+                            <script>document.getElementById('ranking_head').classList.add('activesort')</script>
+                        <% } else if (page_mode == 'sorted'){%>
+                            <script>document.getElementById('<%= sort_type %>_head').classList.add('activesort')</script>
+                        <% } %>
+                    </tr>
+            
+                    <%  var current_num = 1;
+                        for (let album of query_table){ %>
+                        <tr id="<%= album.albumID %>" class="album" draggable="true" ondragstart="start()" ondragover="dragover()">
+                            <td><%= album.ranking %></td>
+                            <td><a draggable="false" href="/search/<%= album.artist %>"><%= album.artist %></a></td>
+                            <td>
+                                <a draggable="false" href="/album/<%= album.ranking %>"><%= album.album %></a>
+                                //
+                                <img style="width: 20px; height: 20px;" draggable="false" alt="" src="<%= album.imageurl %>">
+                            </td>
+                            <td><a draggable="false" href="/search/<%= album.year %>"><%= album.year %></a></td>
+                        </tr>
+                        <% if (current_num%50 == 0 || current_num == 1){ %>
+                            <tr style="margin: 0; font-size: 1px; background-color: rgb(123, 110, 128);">
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        <% } %>
+                    <% current_num++
+                    } %>
+                </table>
+            </div>
+            <% if (page_mode == 'base' || (page_mode == 'sorted' && sort_type == 'ranking')){ %>
+                <button class='btnfloat' onclick="updateRanks()">save changes</button>
+            <% } %>
+        </div>
+        <script>
+            
+        </script>
+        <h2 style="display: none;" id="query_table_contents"><%= JSON.stringify(query_table) %></h2>
+    </body>
+</html>
