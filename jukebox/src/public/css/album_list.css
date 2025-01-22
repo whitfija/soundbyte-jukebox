@@ -1,0 +1,103 @@
+/* Albums grid container */
+.albums-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+/* Individual album card */
+.album-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: visible;
+    border-radius: 1px;
+    background-color: var(--paper-yellow);
+    width: 150px;
+    height: 150px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* album background colors */
+.album-card:nth-child(3n + 1) {
+    background-color: var(--paper-yellow);
+}
+.album-card:nth-child(3n + 2) {
+    background-color: var(--faded-purple);
+}
+.album-card:nth-child(3n + 3) {
+    background-color: var(--star-grey);
+}
+
+/* Hover effect */
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+/* Album image container */
+.album-image {
+    width: 90%;
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 5%; /* Center the image vertically */
+    left: 5%; /* Center the image horizontally */
+}
+
+/* ranking top-right corner */
+.album-ranking {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background: var(--bright-white);
+    color: var(--byte-black);
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 2;
+    font-family: 'FatAlbert Shadow', 'Courier New';
+}
+
+/* Album info container (overlay) */
+.album-info {
+    
+    position: absolute;
+    bottom: 0;
+    left: -0.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: left;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 90%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+/* Album name and artist styles */
+.album-name {
+    margin: 0;
+    font-size: 1.0rem;
+    background-color: var(--bright-white);
+    color: var(--byte-black);
+    margin: 0;
+    font-family: 'FatAlbert Shadow', 'Courier New';
+}
+
+.album-artist {
+    margin: 0;
+    font-size: 0.7rem;
+    background-color: var(--bright-white);
+    color: var(--byte-black);
+    margin: 0;
+    font-family: 'FatAlbert', 'Courier New';
+}

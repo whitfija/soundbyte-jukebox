@@ -1,0 +1,159 @@
+/* --------------------------------------------------- definitions */
+
+:root {
+    /* palette */
+    --byte-black: #1a1a22;
+    --galaxy-grey: #64676a;
+    --star-grey: #e1d9d4;
+    --smooth-purple: #c36788;
+    --faded-purple: #cfa5ab;
+    --bright-white: #f6f6f6;
+    --paper-yellow: #f8f2dc;
+    --sunflower-yellow: #edbd4a;
+}
+
+@font-face {
+    font-family: 'FatAlbert';
+    src: url('/fonts/FatAlbert/FatAlbertBTW01Regular.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FatAlbert Outline';
+    src: url('/fonts/FatAlbert/FatAlbertBTW01Outline.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FatAlbert Shadow';
+    src: url('/fonts/FatAlbert/FatAlbertBTW01Shadow.ttf') format('truetype');
+    font-display: swap;
+}
+
+/* ---------------------------------------------------page defaults */
+
+body {
+    font-family: 'FatAlbert', 'Courier New';
+    background-color: var(--smooth-purple);
+    background-image: url('/img/textures/exclusive-paper.png');
+    background-size: auto;
+    /*background-attachment: fixed;*/ /* stationary */
+    margin: 0;
+    padding: 0;
+    color: var(--byte-black);
+    letter-spacing: 0.05rem;
+    background-blend-mode: multiply;
+}
+
+h1 {
+    font-family: 'FatAlbert Shadow', 'Courier New';
+    background-color: var(--bright-white);
+    color: var(--byte-black);
+    padding: 0.01rem 0.2rem;
+    margin: 0;
+    display: inline-block;
+    border-radius: 0.1px; /* slight softness for edges */
+    letter-spacing: 0rem;
+}
+
+h2, h3 {
+    font-family: 'FatAlbert Outline', 'Courier New';
+}
+
+a {
+
+}
+
+a:hover {
+
+}
+
+p {
+
+}
+
+/* --------------------------------------------------- classes */
+.container {
+
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: -4.5rem;
+}
+
+/* --------------------------------------------------- navigation */
+
+.navbar {
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background image */
+.navbar-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/nav/tvforestbandwshort.jpg'); /* Replace with your image */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: 1;
+    filter: brightness(0.8);
+}
+
+.navbar-title {
+    position: absolute;
+    margin: 1rem 2rem 0 0;
+    font-size: 2rem;
+    text-align: right;
+    right: 0;
+    font-family: 'FatAlbert Shadow', 'Courier New';
+    background-color: var(--bright-white);
+    color: var(--byte-black);
+    padding: 0.01rem 0.2rem;
+    margin: 0;
+    margin-top: 0.7rem;
+    display: inline-block;
+    border-radius: 0.1px; /* slight softness for edges */
+    letter-spacing: 0rem;
+    z-index: 2;
+}
+
+.nav-links {
+    position: absolute;
+    margin-left: 10rem;
+    display: flex;
+    flex-direction: row;
+    margin-top: 4rem;
+    gap: 4rem;
+    font-family: 'FatAlbert', 'Courier New';
+    z-index: 2;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    background-color: var(--byte-black);
+    color: var(--bright-white);
+    padding: 0.01rem 0.2rem;
+    margin: 0;
+    display: inline-block;
+    border-radius: 0.1px; /* slight softness for edges */
+}
+
+.nav-link:hover {
+    color: var(--sunflower-yellow);
+}
