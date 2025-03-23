@@ -1,0 +1,15 @@
+<div class="albums-list">
+    <% albums.forEach((album) => { %>
+        <div class="album-row">
+            <div class="album-ranking">#<%= album.ranking %></div>
+            <div class="album-list-image">
+                <img src="<%= album.imageurl %>" alt="Album Art">
+            </div>
+            <div class="album-details">
+                <div class="album-name"><span><%= album.album %></span></div>
+                <div class="album-artist"><span><%= album.artist %></span></div>
+                <div class="album-year"><span><%= album.year %></span></div>
+            </div>
+        </div>
+    <% }); %>
+</div>

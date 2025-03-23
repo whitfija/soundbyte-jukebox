@@ -37,7 +37,7 @@ body {
     background-color: var(--smooth-purple);
     background-image: url('/img/textures/exclusive-paper.png');
     background-size: auto;
-    /*background-attachment: fixed;*/ /* stationary */
+    /*background-attachment: fixed;*/
     margin: 0;
     padding: 0;
     color: var(--byte-black);
@@ -86,6 +86,7 @@ p {
     width: 100%;
     height: 100%;
     top: -4.5rem;
+    align-items: center;
 }
 
 /* --------------------------------------------------- navigation */
@@ -105,7 +106,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/img/nav/tvforestbandwshort.jpg'); /* Replace with your image */
+    background-image: url('/img/nav/tvforestbandwshort.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -156,4 +157,31 @@ p {
 
 .nav-link:hover {
     color: var(--sunflower-yellow);
+}
+
+input {
+    background-color: var(--bright-white);
+    color: var(--byte-black);
+    padding: 0.5rem;
+    margin: 0.25rem;
+    font-family: 'FatAlbert', 'Courier New';
+}
+
+button {
+    background-color: var(--faded-purple);
+    color: var(--byte-black);
+    padding: 0.5rem;
+    margin: 0.25rem;
+    font-family: 'FatAlbert', 'Courier New';
+}
+
+button:hover {
+    background-color: var(--byte-black);
+    color: var(--paper-yellow);
+}
+
+select {
+    background-color: var(--bright-white);
+    color: var(--byte-black);
+    font-family: 'FatAlbert', 'Courier New';
 }

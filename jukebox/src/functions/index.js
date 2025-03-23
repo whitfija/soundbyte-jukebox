@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 
 app.use('/albums', albumRoutes);
 
-console.log('hello world')
+// console.log('hello world')
 
 // index route
 app.get('/', async (req, res) => {
@@ -30,6 +30,16 @@ app.get('/', async (req, res) => {
     const albums = albumsSnapshot.docs.map(doc => doc.data());
     res.render('index', { albums });
   });
+
+// index route
+app.get('/search', async (req, res) => {
+  const albumsSnapshot = await admin.firestore()
+      .collection('albums')
+      .orderBy('ranking')
+      .get();
+  const albums = albumsSnapshot.docs.map(doc => doc.data());
+  res.render('search', { albums });
+});
 
 // firebase handles http requests
 exports.app = functions.https.onRequest(app);

@@ -1,0 +1,21 @@
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search albums..." />
+    <button id="searchButton">Search</button>
+    
+    <div>
+        <label><input type="checkbox" id="searchByTitle" checked> Title</label>
+        <label><input type="checkbox" id="searchByArtist" checked> Artist</label>
+        <label><input type="checkbox" id="searchByYear"> Year</label>
+    </div>
+
+    <div>
+        <label for="sortBy">Sort by:</label>
+        <select id="sortBy">
+            <option value="ranking">Ranking</option>
+            <option value="album">Album Name</option>
+            <option value="artist">Artist</option>
+            <option value="year">Year</option>
+        </select>
+        <button  style="width: 2rem; height: 2rem; font-size: 1rem; padding: 0;" id="toggleSortDirection">↑↓</button>
+    </div>
+</div>
