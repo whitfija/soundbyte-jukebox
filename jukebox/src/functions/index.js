@@ -31,7 +31,7 @@ app.get('/', async (req, res) => {
     res.render('index', { albums });
   });
 
-// index route
+// search route
 app.get('/search', async (req, res) => {
   const albumsSnapshot = await admin.firestore()
       .collection('albums')
