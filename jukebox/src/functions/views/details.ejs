@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= album.album %> by <%= album.artist %> | soundbyte</title>
+    <%- include('includes/head'); %>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+</head>
+<body>
+    <%- include('includes/nav'); %>
+
+    <div class="content">
+        <h2>edit album</h2>
+        <%- include('includes/album_form', { album: album }) %>
+        <a href="/album/new" style="margin-top: 2rem;"><button type="submit">Add New Album</button></a>
+    </div>
+
+    <script src="/js/form.js"></script>
+</body>
+</html>

@@ -5,7 +5,9 @@
                 <div class="album-ranking">#<%= album.ranking %></div>
             </div>
             <div class="album-info">
-                <h3 class="album-name"><%= album.album %></h3>
+                <h3 class="album-name">
+                    <a href="/album/<%= album.albumID %>"><%= album.album %></a>
+                </h3>
                 <p class="album-artist"><%= album.artist %></p>
                 <p style="display: none;" class="album-year"><%= album.year %></p>
             </div>

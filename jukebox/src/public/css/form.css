@@ -1,0 +1,41 @@
+.album-form {
+    display: flex;
+    gap: 2rem;
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--faded-purple);
+    background-color: var(--smooth-purple);
+    box-shadow: 0 4px 12px var(--byte-black);
+}
+
+.album-form form {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.album-form input {
+    font-size: 1.3rem;
+}
+
+.album-form button {
+    font-size: 1.3rem;
+}
+
+.form-left, .form-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.album-image-preview img {
+    width: 20rem;
+    height: 20rem;;
+    object-fit: cover;
+    background-color: var(--paper-yellow);
+    padding: 2rem;
+}

@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended: true}))
 
 app.set('view engine', 'ejs');
 
-app.use('/albums', albumRoutes);
+app.use('/album', albumRoutes);
 
 // console.log('hello world')
 

@@ -23,6 +23,7 @@ if (toggleButton && gridView && listView) {
     });
 }
 
+
 // search vars
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');

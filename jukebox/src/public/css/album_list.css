@@ -1,5 +1,7 @@
 .controls {
     position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 0rem;
     left: 0rem;
     /* background-color: var(--star-grey);
@@ -15,13 +17,19 @@
     opacity: 100%;
 }
 
-.controls button {
+.controls button, .controls a {
     /* background: var(--bright-white); */
     background: none;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     cursor: pointer;
     font-weight: bold;
+    width: auto;
+    height: 2rem;
+}
+
+.controls button img,.controls a img {
+    height: 100%;
 }
 
 .controls button:hover {
@@ -285,4 +293,16 @@
     font-size: 1.5rem;
     width: 50%;
     max-width: 10rem;
+}
+
+/* remove default link styling */
+.albums-list a, .albums-grid a {
+    text-decoration: none;      
+    color: inherit;             
+    font: inherit;              
+    transition: color 0.3s ease;
+}
+
+.albums-list a:hover, .albums-grid a:hover {
+    color: var(--smooth-purple);
 }
