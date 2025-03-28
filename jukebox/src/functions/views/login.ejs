@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('includes/head'); %>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+</head>
+<body>
+    <%- include('includes/nav'); %>
+
+    <div class="content">
+        <div class="login-form">
+            <h2>enter password to gain full access:</h2>
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="password">password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

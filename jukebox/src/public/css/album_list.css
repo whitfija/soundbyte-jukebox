@@ -206,11 +206,17 @@
     font-size: 1rem;
     font-family: 'FatAlbert', 'Courier New';
     background: transparent;
+    overflow: hidden;
 }
 .album-details div span {
     background-color: var(--bright-white);
     color: var(--byte-black);
-    display: inline;
+    /* display: inline; */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .album-details .album-name {
@@ -305,4 +311,23 @@
 
 .albums-list a:hover, .albums-grid a:hover {
     color: var(--smooth-purple);
+}
+
+.sortable-ghost {
+    opacity: 0.3;
+    background: #f0f0f0;
+    border: 2px dashed #ccc;
+    /* transform: scale(1.05); */
+    transition: all 0.2s;
+}
+
+.selected {
+    border: 5px dashed var(--sunflower-yellow);
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 500px) { 
+    .album-details .album-name {
+        font-size: 1rem;
+    }
 }

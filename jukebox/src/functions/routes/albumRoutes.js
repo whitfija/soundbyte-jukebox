@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const admin = require('firebase-admin');
 const { Timestamp } = require('firebase-admin/firestore');
+const { requireAuth } = require('./auth')
 
 // redirect to main page
 router.get('/', async (req, res) => {
@@ -9,7 +10,7 @@ router.get('/', async (req, res) => {
 });
 
 // form to add a new album
-router.get('/new', (req, res) => {
+router.get('/new', requireAuth, (req, res) => {
     res.render('new', { album: null });  // Pass `null` for new form
 });
 
@@ -68,6 +69,60 @@ router.post('/new', async (req, res) => {
   }
 });
 
+// save updated album order from sort page
+router.post('/save-order', async (req, res) => {
+    const { albums } = req.body;
+    console.log('processing album order update...')
+    // console.log('first 5 albums being processed:', albums.slice(0, 5));
+
+    try {
+        const batch = admin.firestore().batch();
+        const albumsRef = admin.firestore().collection('albums');
+        
+        // convert ids to numbers
+        const albumIDs = albums.map(a => Number(a.id));
+        
+        // processing in chunks to avoid limit on IN calls
+        const chunkSize = 30;
+        let allDocs = [];
+        
+        for (let i = 0; i < albumIDs.length; i += chunkSize) {
+            const chunk = albumIDs.slice(i, i + chunkSize);
+            const snapshot = await albumsRef.where('albumID', 'in', chunk).get();
+            allDocs.push(...snapshot.docs);
+        }
+
+        // check matches
+        const foundIDs = allDocs.map(doc => doc.data().albumID);
+        const missingAlbums = albums.filter(a => !foundIDs.includes(Number(a.id)));
+        
+        if (missingAlbums.length > 0) {
+            console.error('missing albums:', missingAlbums);
+            return res.status(404).json({
+                success: false,
+                message: 'some albums not found',
+                missing: missingAlbums.map(a => a.id)
+            });
+        }
+
+        // update rankings
+        allDocs.forEach(doc => {
+            const albumData = albums.find(a => Number(a.id) === doc.data().albumID);
+            batch.update(doc.ref, { ranking: albumData.ranking });
+        });
+
+        await batch.commit();
+        res.status(200).json({ success: true });
+        console.log('---- successful album order update')
+        
+    } catch (error) {
+        console.error('error sorting albums:', error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
 
 // display individual album details
 router.get('/:albumId', async (req, res) => {
@@ -109,7 +164,6 @@ router.get('/:albumId', async (req, res) => {
       res.status(500).send('Error loading album');
   }
 });
-
 
 // save album details
 router.post('/:albumId', async (req, res) => {
@@ -156,6 +210,5 @@ router.post('/:albumId', async (req, res) => {
       res.status(500).send('Error updating album');
   }
 });
-
 
 module.exports = router;

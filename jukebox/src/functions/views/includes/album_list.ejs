@@ -1,6 +1,6 @@
-<div class="albums-list">
+<div class="albums-list" id="sortable-list">
     <% albums.forEach((album) => { %>
-        <div class="album-row">
+        <div class="album-row" data-id="<%= album.albumID %>">
             <div class="album-ranking">#<%= album.ranking %></div>
             <div class="album-list-image">
                 <img src="<%= album.imageurl %>" alt="Album Art">

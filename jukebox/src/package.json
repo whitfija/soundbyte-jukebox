@@ -1,5 +1,11 @@
 {
+  "type": "module",
   "dependencies": {
-    "ejs": "^3.1.10"
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express-session": "^1.18.1",
+    "firebase-admin": "^13.2.0",
+    "firebase-functions": "^6.3.2",
+    "sortablejs": "^1.15.6"
   }
 }

@@ -1,45 +1,46 @@
 <div class="album-form">
-    <form action="<%= album ? `/album/${album.id}` : '/album/new' %>" method="POST">
-        <div class="form-left">
-            <div class="album-image-preview">
-                <img id="imagePreview" src="<%= album ? album.imageurl : '/img/legacy/placeholder_cover.png' %>" alt="Album Art">
-            </div>
-            
-            <label for="imageurl">Album Art URL:</label>
-            <input type="text" id="imageurl" name="imageurl" 
-                   value="<%= album ? album.imageurl : '' %>" 
-                   placeholder="Enter image URL"
-                   oninput="updatePreview()">
-        </div>
+       <h1 style="align-self: center; text-align: center;"><%= album ? album.album : 'new album' %> - <%= album ? album.artist : '' %></h1>
+       <form action="<%= album ? `/album/${album.id}` : '/album/new' %>" method="POST">
+              <div class="form-left">
+              <div class="album-image-preview">
+                     <img id="imagePreview" src="<%= album ? album.imageurl : '/img/legacy/placeholder_cover.png' %>" alt="Album Art">
+              </div>
+              
+              <label for="imageurl">Album Art URL:</label>
+              <input type="text" id="imageurl" name="imageurl" 
+                     value="<%= album ? album.imageurl : '' %>" 
+                     placeholder="Enter image URL"
+                     oninput="updatePreview()">
+              </div>
 
-        <div class="form-right">
-            <label>Artist:</label>
-            <input type="text" name="artist" 
-                   value="<%= album ? album.artist : '' %>" 
-                   placeholder="Enter artist">
-            <label>Album Name:</label>
-            <input type="text" name="album" 
-                   value="<%= album ? album.album : '' %>" 
-                   placeholder="Enter album name">
-            <label>Year:</label>
-            <input type="text" name="year" 
-                   value="<%= album ? album.year : '' %>" 
-                   placeholder="Enter year">
-            <label>Ranking:</label>
-            <input type="number" name="ranking"
-                   value="<%= album ? album.ranking : '' %>"
-                   placeholder="Enter ranking"
-                   min="1">
-            <label>Keywords (comma-separated):</label>
-            <input type="text" name="keywords" 
-                   value="<%= album ? album.keywords : '' %>" 
-                   placeholder="Enter keywords">
-            <label>Genre:</label>
-            <input type="text" name="genre" 
-                   value="<%= album ? album.genre : '' %>" 
-                   placeholder="Enter genre">
+              <div class="form-right">
+              <label>Artist:</label>
+              <input type="text" name="artist" 
+                     value="<%= album ? album.artist : '' %>" 
+                     placeholder="Enter artist">
+              <label>Album Name:</label>
+              <input type="text" name="album" 
+                     value="<%= album ? album.album : '' %>" 
+                     placeholder="Enter album name">
+              <label>Year:</label>
+              <input type="text" name="year" 
+                     value="<%= album ? album.year : '' %>" 
+                     placeholder="Enter year">
+              <label>Ranking:</label>
+              <input type="number" name="ranking"
+                     value="<%= album ? album.ranking : '' %>"
+                     placeholder="Enter ranking"
+                     min="1">
+              <label>Keywords (comma-separated):</label>
+              <input type="text" name="keywords" 
+                     value="<%= album ? album.keywords : '' %>" 
+                     placeholder="Enter keywords">
+              <label>Genre:</label>
+              <input type="text" name="genre" 
+                     value="<%= album ? album.genre : '' %>" 
+                     placeholder="Enter genre">
 
-            <button type="submit">Save Album</button>
-        </div>
-    </form>
+              <button type="submit">Save Album</button>
+              </div>
+       </form>
 </div>

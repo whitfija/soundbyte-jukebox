@@ -9,14 +9,21 @@
     "logs": "firebase functions:log"
   },
   "engines": {
-    "node": "22"
+    "node": "18"
   },
   "main": "index.js",
+  "cloud-function-config": {
+    "timeoutSeconds": 120,
+    "availableMemoryMb": 512
+  },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "express-session": "^1.17.3",
     "firebase-admin": "^13.0.2",
-    "firebase-functions": "^6.2.0"
+    "firebase-functions": "^6.2.0",
+    "firestore-store": "^2.0.2"
   },
   "devDependencies": {
     "firebase-functions-test": "^3.1.0"

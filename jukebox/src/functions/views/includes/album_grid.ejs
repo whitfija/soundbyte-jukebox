@@ -1,6 +1,6 @@
-<div class="albums-grid">
+<div class="albums-grid" id="sortable-grid">
     <% albums.forEach((album, index) => { %>
-        <div class="album-card" style="--index: <%= index %>">
+        <div class="album-card" data-id="<%= album.albumID %>" style="--index: <%= index %>">
             <div class="album-image" style="background-image: url('<%= album.imageurl %>');">
                 <div class="album-ranking">#<%= album.ranking %></div>
             </div>

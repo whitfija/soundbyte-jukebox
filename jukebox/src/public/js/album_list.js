@@ -148,11 +148,13 @@ if (searchInput) {
     });
 }
 
+if (searchButton) {
 // update search on option change
 searchByTitle.addEventListener('change', filterAlbums);
 searchByArtist.addEventListener('change', filterAlbums);
 searchByYear.addEventListener('change', filterAlbums);
 sortBySelect.addEventListener('change', filterAlbums);
+}
 
 // toggle sort direction when the button is clicked
 if (toggleSortDirectionButton) {

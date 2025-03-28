@@ -127,20 +127,24 @@ p {
     margin: 0;
     margin-top: 0.7rem;
     display: inline-block;
-    border-radius: 0.1px; /* slight softness for edges */
+    border-radius: 0.1px;
     letter-spacing: 0rem;
     z-index: 2;
 }
 
 .nav-links {
     position: absolute;
-    margin-left: 10rem;
+    /* margin-left: 10rem; */
     display: flex;
     flex-direction: row;
-    margin-top: 4rem;
-    gap: 4rem;
+    flex-wrap: wrap;
+    margin-top: 4.5rem;
+    row-gap: 1rem;
+    column-gap: 4rem;
     font-family: 'FatAlbert', 'Courier New';
     z-index: 2;
+    justify-content: center;
+    width: 100%;
 }
 
 .nav-link {
@@ -152,7 +156,7 @@ p {
     padding: 0.01rem 0.2rem;
     margin: 0;
     display: inline-block;
-    border-radius: 0.1px; /* slight softness for edges */
+    border-radius: 0.1px;
 }
 
 .nav-link:hover {
@@ -184,4 +188,26 @@ select {
     background-color: var(--bright-white);
     color: var(--byte-black);
     font-family: 'FatAlbert', 'Courier New';
+}
+
+@media screen and (max-width: 500px) {
+    .nav-links {
+        margin-top: 8rem;
+        column-gap: 1.5rem; 
+        row-gap: 0.5rem; 
+        padding-bottom: 1rem;
+    }
+
+    .navbar {
+        margin-bottom: 2rem; 
+        height: 14rem; 
+    }
+
+    .nav-link {
+        
+    }
+
+    .navbar-title {
+        
+    }
 }
