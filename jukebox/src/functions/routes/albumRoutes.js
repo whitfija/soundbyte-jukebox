@@ -11,12 +11,12 @@ router.get('/', async (req, res) => {
 
 // form to add a new album
 router.get('/new', requireAuth, (req, res) => {
-    res.render('new', { album: null });  // Pass `null` for new form
+    res.render('new', { album: null });  // null for new form
 });
 
 // add new album
 router.post('/new', async (req, res) => {
-  const { artist, album, year, imageurl } = req.body;
+  const { artist, album, year, imageurl, keywords, genre} = req.body;
 
   try {
       // generate document name
@@ -55,8 +55,8 @@ router.post('/new', async (req, res) => {
           year,
           imageurl,
           ranking: newRanking,             
-          keywords: "",
-          genre: "",
+          keywords: keywords || "",
+          genre: genre || "",
           dateadded: Timestamp.now()       
       });
 
@@ -124,6 +124,33 @@ router.post('/save-order', async (req, res) => {
     }
 });
 
+// get random album
+router.get('/random', async (req, res) => {
+    try {
+        // First get a random album ID without fetching all documents
+        const albumsRef = admin.firestore().collection('albums');
+        const snapshot = await albumsRef.select('albumID').get();
+        
+        if (snapshot.empty) {
+            return res.status(404).send('No albums found');
+        }
+        
+        // Get array of all album IDs
+        const albumIDs = snapshot.docs.map(doc => doc.id);
+        
+        // Select random ID
+        const randomIndex = Math.floor(Math.random() * albumIDs.length);
+        const randomAlbumID = albumIDs[randomIndex];
+        
+        // Redirect to the random album's page
+        res.redirect(`/album/${randomAlbumID}`);
+        
+    } catch (error) {
+        console.error('Error getting random album:', error);
+        res.status(500).send('Error getting random album');
+    }
+});
+
 // display individual album details
 router.get('/:albumId', async (req, res) => {
   const albumId = req.params.albumId;
@@ -166,9 +193,9 @@ router.get('/:albumId', async (req, res) => {
 });
 
 // save album details
-router.post('/:albumId', async (req, res) => {
+router.post('/:albumId', requireAuth, async (req, res) => {
   const albumId = req.params.albumId;
-  const { artist, album, year, imageurl, ranking, keywords, genre } = req.body;
+  const { artist, album, year, imageurl, keywords, genre } = req.body;
 
   try {
       let albumDoc = null;
@@ -197,7 +224,6 @@ router.post('/:albumId', async (req, res) => {
           album,
           year,
           imageurl,
-          ranking: parseInt(ranking) || 0,
           keywords: keywords || "",
           genre: genre || ""
       });

@@ -1,5 +1,12 @@
 <div class="album-form">
-       <h1 style="align-self: center; text-align: center;"><%= album ? album.album : 'new album' %> - <%= album ? album.artist : '' %></h1>
+       <h1 style="align-self: center; text-align: center;">
+              <%= album ? album.album : 'new album' %> - 
+              <% if (album) { %>
+                     <a href="/search?q=<%= encodeURIComponent(album.artist) %>&artist=true">
+                     <%= album.artist %>
+                     </a>
+              <% } %>
+       </h1>
        <form action="<%= album ? `/album/${album.id}` : '/album/new' %>" method="POST">
               <div class="form-left">
               <div class="album-image-preview">
@@ -26,11 +33,6 @@
               <input type="text" name="year" 
                      value="<%= album ? album.year : '' %>" 
                      placeholder="Enter year">
-              <label>Ranking:</label>
-              <input type="number" name="ranking"
-                     value="<%= album ? album.ranking : '' %>"
-                     placeholder="Enter ranking"
-                     min="1">
               <label>Keywords (comma-separated):</label>
               <input type="text" name="keywords" 
                      value="<%= album ? album.keywords : '' %>" 

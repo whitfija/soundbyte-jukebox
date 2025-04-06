@@ -36,7 +36,6 @@
     background: var(--paper-yellow);
 }
 
-/* Button Icon Styles */
 #toggleView {
     background: transparent;
     border: none;
@@ -51,8 +50,7 @@
 }
 
 
-/* -------------------------------- GRID VIEW --------------------------------*
-/* Albums grid container */
+/* -------------------------------- GRID VIEW --------------------------------*/
 .albums-grid {
     display: flex;
     flex-direction: row;
@@ -64,7 +62,6 @@
     align-items: center;
 }
 
-/* Individual album card */
 .album-card {
     position: relative;
     display: flex;
@@ -90,7 +87,6 @@
     background-color: var(--star-grey);
 }
 
-/* Hover effect */
 .album-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -143,7 +139,6 @@
     font-family: 'FatAlbert', 'Courier New';
 }
 
-/* Album info container (overlay) */
 .album-info {
     position: absolute;
     bottom: 0;

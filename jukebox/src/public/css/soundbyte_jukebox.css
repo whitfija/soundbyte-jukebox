@@ -72,6 +72,54 @@ p {
 
 }
 
+/* scrollbar stuff */
+    ::-webkit-scrollbar {
+        width: 14px; 
+        height: 14px; 
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--star-grey); 
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--smooth-purple);
+        border: 2px solid var(--star-grey);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--byte-black);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: var(--galaxy-grey);
+    }
+
+    /* firefox */
+    * {
+        scrollbar-width: auto;
+        scrollbar-color: var(--smooth-purple) var(--star-grey);
+    }
+
+    /* mobile */
+    @media screen and (max-width: 500px) {
+        ::-webkit-scrollbar {
+            width: 20px;
+            height: 20px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            min-height: 60px;
+            background: var(--smooth-purple);
+            border: 3px solid var(--star-grey);
+        }
+        
+        body {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: scroll;
+        }
+    }
+
 /* --------------------------------------------------- classes */
 .container {
 
@@ -99,7 +147,6 @@ p {
     flex-direction: column;
 }
 
-/* Background image */
 .navbar-background {
     position: absolute;
     top: 0;

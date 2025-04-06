@@ -26,6 +26,17 @@
     font-size: 1.3rem;
 }
 
+.album-form a {
+    text-decoration: none;
+    color: inherit;
+    font: inherit;
+    transition: color 0.3s ease;
+}
+
+.album-form a:hover {
+    color: var(--smooth-purple);
+}
+
 .form-left, .form-right {
     flex: 1;
     display: flex;

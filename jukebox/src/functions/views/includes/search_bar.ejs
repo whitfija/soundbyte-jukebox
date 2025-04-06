@@ -1,21 +1,21 @@
 <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search albums..." />
+    <input type="text" id="searchInput" placeholder="Search albums..." value="<%= initialQuery %>"/>
     <button id="searchButton">Search</button>
     
     <div>
-        <label><input type="checkbox" id="searchByTitle" checked> Title</label>
-        <label><input type="checkbox" id="searchByArtist" checked> Artist</label>
-        <label><input type="checkbox" id="searchByYear"> Year</label>
+        <label><input type="checkbox" id="searchByTitle" <%= initialTitleChecked ? 'checked' : '' %>> Title</label>
+        <label><input type="checkbox" id="searchByArtist" <%= initialArtistChecked ? 'checked' : '' %>> Artist</label>
+        <label><input type="checkbox" id="searchByYear" <%= initialYearChecked ? 'checked' : '' %>> Year</label>
     </div>
 
     <div>
         <label for="sortBy">Sort by:</label>
         <select id="sortBy">
-            <option value="ranking">Ranking</option>
-            <option value="album">Album Name</option>
-            <option value="artist">Artist</option>
-            <option value="year">Year</option>
+            <option value="ranking" <%= initialSort === 'ranking' ? 'selected' : '' %>>Ranking</option>
+            <option value="album" <%= initialSort === 'album' ? 'selected' : '' %>>Album Name</option>
+            <option value="artist" <%= initialSort === 'artist' ? 'selected' : '' %>>Artist</option>
+            <option value="year" <%= initialSort === 'year' ? 'selected' : '' %>>Year</option>
         </select>
-        <button  style="width: 2rem; height: 2rem; font-size: 1rem; padding: 0;" id="toggleSortDirection">↑↓</button>
+        <button  style="width: 2rem; height: 2rem; font-size: 1rem; padding: 0;" id="toggleSortDirection"><%= initialDirection === 'asc' ? '↑↓' : '↓↑' %></button>
     </div>
 </div>

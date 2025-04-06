@@ -8,7 +8,9 @@
                 <h3 class="album-name">
                     <a href="/album/<%= album.albumID %>"><%= album.album %></a>
                 </h3>
-                <p class="album-artist"><%= album.artist %></p>
+                <p class="album-artist">
+                    <a href="/search?q=<%= encodeURIComponent(album.artist) %>&title=false&artist=true"><%= album.artist %></a>
+                </p>
                 <p style="display: none;" class="album-year"><%= album.year %></p>
             </div>
         </div>

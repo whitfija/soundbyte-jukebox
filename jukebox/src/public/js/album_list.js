@@ -4,7 +4,7 @@ const gridView = document.querySelector('.albums-grid');
 const listView = document.querySelector('.albums-list');
 let isGridView = true;  // grid view default
 
-let isAscending = true;
+let isAscending = window.location.search.includes('dir=desc') ? false : true;
 const toggleSortDirectionButton = document.getElementById('toggleSortDirection');
 
 // listview / gridview toggle
@@ -39,6 +39,16 @@ function filterAlbums() {
     const isArtistChecked = searchByArtist.checked;
     const isYearChecked = searchByYear.checked;
     const sortBy = sortBySelect.value;
+
+    // url params setups
+    const params = new URLSearchParams();
+    if (query) params.set('q', query);
+    params.set('sort', sortBy);
+    params.set('dir', isAscending ? 'asc' : 'desc');
+    if (!isTitleChecked) params.set('title', 'false');
+    if (!isArtistChecked) params.set('artist', 'false');
+    if (isYearChecked) params.set('year', 'true');
+    window.history.pushState({}, '', `/search?${params.toString()}`); // update url
 
     // get all albums in both views
     const albums = document.querySelectorAll('.album-row, .album-card');
@@ -131,6 +141,18 @@ function filterAlbums() {
         listView.style.display = 'flex';
     }
 }
+
+// init search from url
+function initFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('q')) {
+        searchInput.value = params.get('q');
+    }
+    filterAlbums();
+}
+
+// search on page load
+document.addEventListener('DOMContentLoaded', initFromURL);
 
 // search button
 if (searchButton) {

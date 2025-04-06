@@ -9,8 +9,12 @@
                 <div class="album-name">
                     <a href="/album/<%= album.albumID %>"><span><%= album.album %></span></a>
                 </div>
-                <div class="album-artist"><span><%= album.artist %></span></div>
-                <div class="album-year"><span><%= album.year %></span></div>
+                <div class="album-artist"><span>
+                    <a href="/search?q=<%= encodeURIComponent(album.artist) %>&title=false&artist=true"><%= album.artist %></a>
+                </span></div>
+                <div class="album-year"><span>
+                    <a href="/search?q=<%= album.year %>&title=false&artist=false&year=true"><%= album.year %></a>
+                </span></div>
             </div>
         </div>
     <% }); %>

@@ -4,11 +4,15 @@
     <title><%= album.album %> by <%= album.artist %> | soundbyte</title>
     <%- include('includes/head'); %>
     <link rel="stylesheet" type="text/css" href="/css/form.css">
+    <link rel="stylesheet" type="text/css" href="/css/album_list.css">
 </head>
 <body>
     <%- include('includes/nav'); %>
 
     <div class="content">
+        <div class="controls">
+            <a href="/album/random" id="randomAlbum"><img id="randomAlbum" src="/img/nav/shuffle_icon.png" alt="Random Album"></a>
+        </div>  
         <!-- <h2>edit album</h2> -->
         <%- include('includes/album_form', { album: album }) %>
         <a href="/album/new" style="margin-top: 2rem;"><button type="submit">Add New Album</button></a>

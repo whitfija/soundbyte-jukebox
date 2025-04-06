@@ -68,7 +68,17 @@ app.get('/search', async (req, res) => {
       .orderBy('ranking')
       .get();
   const albums = albumsSnapshot.docs.map(doc => doc.data());
-  res.render('search', { albums });
+
+  // handling url params and rendering
+  res.render('search', { 
+    albums,
+    initialQuery: req.query.q || '',
+    initialSort: req.query.sort || 'ranking',
+    initialDirection: req.query.dir || 'asc',
+    initialTitleChecked: req.query.title !== 'false',
+    initialArtistChecked: req.query.artist !== 'false',
+    initialYearChecked: req.query.year === 'true'
+  });
 });
 
 // sort route
