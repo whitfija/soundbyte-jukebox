@@ -1,0 +1,139 @@
+.battle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin-top: 2rem;
+}
+
+.battle-arena {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.battle-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 260px;
+    padding: 1rem;
+    background-color: var(--paper-yellow);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.battle-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.battle-card:nth-child(1) {
+    background-color: var(--paper-yellow);
+}
+
+.battle-card:nth-child(3) {
+    background-color: var(--faded-purple);
+}
+
+.battle-image {
+    width: 12rem;
+    height: 12rem;
+    overflow: hidden;
+}
+
+.battle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.battle-meta {
+    text-align: center;
+}
+
+.battle-artist {
+    font-family: 'FatAlbert Shadow', 'Courier New';
+    font-size: 1rem;
+    margin: 0;
+}
+
+.battle-album {
+    font-family: 'FatAlbert Outline', 'Courier New';
+    font-size: 1.3rem;
+    margin: 0;
+    background: var(--bright-white);
+    padding: 0.1rem 0.3rem;
+}
+
+.battle-ranking {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.battle-vs {
+    font-family: 'FatAlbert Shadow', 'Courier New';
+    font-size: 2rem;
+    background: var(--bright-white);
+    padding: 0.2rem 0.5rem;
+}
+
+.battle-select {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--byte-black);
+    color: var(--bright-white);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.battle-select:hover {
+    background-color: var(--sunflower-yellow);
+    color: var(--byte-black);
+}
+
+.battle-controls {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.battle-controls button, select {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.winner {
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
+.loser {
+  opacity: 0.3;
+  transition: opacity 0.2s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+
+    .battle-arena {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .battle-card {
+        width: 90%;
+        max-width: 320px;
+    }
+}

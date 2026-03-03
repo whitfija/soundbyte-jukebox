@@ -3,7 +3,8 @@ const {onRequest} = require("firebase-functions/v2/https");
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 const express = require("express");
-const albumRoutes = require('./routes/albumRoutes');
+const albumRoutes = require('./routes/album');
+const battleRoutes = require('./routes/battle');
 const {initializeApp} = require("firebase-admin/app");
 const {getFirestore} = require("firebase-admin/firestore");
 const session = require('express-session');
@@ -42,11 +43,14 @@ app.use(
 
 // public folder --> static files
 app.use('/public', express.static('./public'));
+
 app.use(express.urlencoded({extended: true}))
+app.use(express.json());
 
 app.set('view engine', 'ejs');
 
 app.use('/album', albumRoutes);
+app.use('/battle', battleRoutes);
 
 // console.log('hello world')
 

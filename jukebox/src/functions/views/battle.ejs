@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= albumA.album %> vs <%= albumB.album %> | soundbyte</title>
+    <%- include('includes/head'); %>
+    <link rel="stylesheet" type="text/css" href="/css/battle.css">
+    <link rel="stylesheet" type="text/css" href="/css/album_list.css">
+</head>
+<body>
+    <%- include('includes/nav'); %>
+
+    <div class="content">
+        <div class="controls">
+            <a href="/album/new" id="newAlbum"><img id="newAlbum" src="/img/nav/plus_icon.png" alt="New Album"></a>
+            <a href="/album/random" id="randomAlbum"><img id="randomAlbum" src="/img/nav/shuffle_icon.png" alt="Random Album"></a>
+            <a href="/battle" id="battle"><img id="battle" src="/img/nav/battle_icon.png" alt="Album Battle"></a>
+        </div> 
+
+        <div class="battle-wrapper">
+
+            <h1>battle</h1>
+
+            <div class="battle-arena">
+
+                <div class="battle-card" data-id="<%= albumA.albumID %>">
+                <div class="battle-image">
+                    <img src="<%= albumA.imageurl %>" alt="">
+                </div>
+
+                <div class="battle-meta">
+                    <h3 class="battle-album"><%= albumA.album %></h3>
+                    <h2 class="battle-artist"><%= albumA.artist %></h2>
+                    <p class="battle-ranking">#<%= albumA.ranking %></p>
+                </div>
+
+                <button class="battle-select">choose</button>
+                </div>
+
+                <div class="battle-vs">VS</div>
+
+                <div class="battle-card" data-id="<%= albumB.albumID %>">
+                <div class="battle-image">
+                    <img src="<%= albumB.imageurl %>" alt="">
+                </div>
+
+                <div class="battle-meta">
+                    <h3 class="battle-album"><%= albumB.album %></h3>
+                    <h2 class="battle-artist"><%= albumB.artist %></h2>
+                    <p class="battle-ranking">#<%= albumB.ranking %></p>
+                </div>
+
+                <button class="battle-select">choose</button>
+                </div>
+
+            </div>
+
+            <div class="battle-controls">
+                <button id="nextBattle">next</button>
+                <select id="difficultySelect">
+                    <option value="1000">easy</option>
+                    <option value="500">medium</option>
+                    <option value="250" <%= windowSize == 250 ? 'selected' : '' %>>hard</option>
+                </select>
+            </div>
+
+            </div>
+    </div>
+
+    <script src="/js/battle.js"></script>
+</body>
+</html>

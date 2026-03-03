@@ -17,11 +17,11 @@ exports.requireAuth = async (req, res, next) => {
                 return next();
             }
         } catch (error) {
-            console.error('Error checking password:', error);
+            console.error('error checking password:', error);
         }
     }
     
-    // Not authenticated - show login page
+    // show login page
     res.render('login');
 };
 
@@ -29,7 +29,7 @@ exports.requireAuth = async (req, res, next) => {
 exports.checkPassword = async (req, res, next) => {
     const { password } = req.body;
     if (!password) {
-        return res.status(401).send('Password required');
+        return res.status(401).send('password required');
     }
     
     try {
@@ -38,9 +38,9 @@ exports.checkPassword = async (req, res, next) => {
             req.session.authenticated = true;
             return next();
         }
-        res.status(403).send('Incorrect password');
+        res.status(403).send('incorrect password');
     } catch (error) {
-        console.error('Error checking password:', error);
-        res.status(500).send('Authentication error');
+        console.error('error checking password:', error);
+        res.status(500).send('authentication error');
     }
 };

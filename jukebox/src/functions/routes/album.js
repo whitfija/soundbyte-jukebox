@@ -26,7 +26,7 @@ router.post('/new', async (req, res) => {
       // check if already exists
       const existingDoc = await docRef.get();
       if (existingDoc.exists) {
-          return res.status(400).send('Album already exists with this name.');
+          return res.status(400).send('album already exists with this name.');
       }
 
       const albumsSnapshot = await admin.firestore().collection('albums').get();
@@ -60,12 +60,12 @@ router.post('/new', async (req, res) => {
           dateadded: Timestamp.now()       
       });
 
-      console.log(`Album added: ${artist} - ${album} with ID: ${albumID}, Rank: ${newRanking}`);
+      console.log(`album added: ${artist} - ${album} with ID: ${albumID}, Rank: ${newRanking}`);
       res.redirect('/');
 
   } catch (error) {
-      console.error('Error adding album:', error);
-      res.status(500).send('Error adding album');
+      console.error('error adding album:', error);
+      res.status(500).send('error adding album');
   }
 });
 
@@ -127,27 +127,22 @@ router.post('/save-order', async (req, res) => {
 // get random album
 router.get('/random', async (req, res) => {
     try {
-        // First get a random album ID without fetching all documents
         const albumsRef = admin.firestore().collection('albums');
         const snapshot = await albumsRef.select('albumID').get();
         
         if (snapshot.empty) {
-            return res.status(404).send('No albums found');
+            return res.status(404).send('no albums found');
         }
         
-        // Get array of all album IDs
         const albumIDs = snapshot.docs.map(doc => doc.id);
-        
-        // Select random ID
         const randomIndex = Math.floor(Math.random() * albumIDs.length);
         const randomAlbumID = albumIDs[randomIndex];
         
-        // Redirect to the random album's page
         res.redirect(`/album/${randomAlbumID}`);
         
     } catch (error) {
-        console.error('Error getting random album:', error);
-        res.status(500).send('Error getting random album');
+        console.error('error getting random album:', error);
+        res.status(500).send('error getting random album');
     }
 });
 
@@ -174,7 +169,7 @@ router.get('/:albumId', async (req, res) => {
 
       // album not found
       if (!albumDoc || !albumDoc.exists) {
-          return res.status(404).send('Album not found');
+          return res.status(404).send('album not found');
       }
 
       const album = { id: albumDoc.id, ...albumDoc.data() };
@@ -187,8 +182,8 @@ router.get('/:albumId', async (req, res) => {
       res.render('details', { album });
 
   } catch (error) {
-      console.error('Error fetching album:', error);
-      res.status(500).send('Error loading album');
+      console.error('error fetching album:', error);
+      res.status(500).send('error loading album');
   }
 });
 
@@ -215,7 +210,7 @@ router.post('/:albumId', requireAuth, async (req, res) => {
       }
 
       if (!albumDoc) {
-          return res.status(404).send('Album not found');
+          return res.status(404).send('album not found');
       }
 
       // update album fields
@@ -228,12 +223,12 @@ router.post('/:albumId', requireAuth, async (req, res) => {
           genre: genre || ""
       });
 
-      console.log(`Updated album: ${albumId}`);
+      console.log(`updated album: ${albumId}`);
       res.redirect(`/album/${albumId}`);
 
   } catch (error) {
-      console.error('Error updating album:', error);
-      res.status(500).send('Error updating album');
+      console.error('error updating album:', error);
+      res.status(500).send('error updating album');
   }
 });
 
